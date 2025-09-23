@@ -1,0 +1,312 @@
+{
+  "states": {
+    "CA": {
+      "total": 98394,
+      "band": {
+        "low": 150,
+        "avg": 320,
+        "high": 820
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 175
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 6132
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 234
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 967
+      }
+    },
+    "MT": {
+      "total": 23732,
+      "band": {
+        "low": 20,
+        "avg": 70,
+        "high": 260
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 98
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 640
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 110
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 500
+      }
+    },
+    "AZ": {
+      "total": 22965,
+      "band": {
+        "low": 30,
+        "avg": 95,
+        "high": 310
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 120
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 780
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 132
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 560
+      }
+    },
+    "OR": {
+      "total": 21568,
+      "band": {
+        "low": 25,
+        "avg": 90,
+        "high": 280
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 88
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 710
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 96
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 480
+      }
+    },
+    "WA": {
+      "total": 18316,
+      "band": {
+        "low": 20,
+        "avg": 75,
+        "high": 260
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 72
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 580
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 80
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 420
+      }
+    },
+    "ID": {
+      "total": 14436,
+      "band": {
+        "low": 18,
+        "avg": 60,
+        "high": 210
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 60
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 430
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 67
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 360
+      }
+    },
+    "UT": {
+      "total": 13772,
+      "band": {
+        "low": 15,
+        "avg": 55,
+        "high": 220
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 58
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 420
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 61
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 330
+      }
+    },
+    "TX": {
+      "total": 13224,
+      "band": {
+        "low": 22,
+        "avg": 65,
+        "high": 240
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 70
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 500
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 75
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 350
+      }
+    },
+    "CO": {
+      "total": 12270,
+      "band": {
+        "low": 16,
+        "avg": 58,
+        "high": 230
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 62
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 440
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 64
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 310
+      }
+    },
+    "NM": {
+      "total": 12103,
+      "band": {
+        "low": 14,
+        "avg": 50,
+        "high": 200
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 55
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 390
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 59
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 280
+      }
+    },
+    "NV": {
+      "total": 9500,
+      "band": {
+        "low": 14,
+        "avg": 48,
+        "high": 180
+      },
+      "last_obs_week": {
+        "start": "2025-09-01",
+        "end": "2025-09-07",
+        "count": 50
+      },
+      "last_obs_month": {
+        "start": "2025-09-01",
+        "end": "2025-09-30",
+        "count": 340
+      },
+      "next_week_forecast": {
+        "start": "2025-09-08",
+        "end": "2025-09-14",
+        "count": 54
+      },
+      "next_month_forecast": {
+        "start": "2025-10-01",
+        "end": "2025-10-31",
+        "count": 250
+      }
+    }
+  }
+}

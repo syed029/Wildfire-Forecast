@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wildfire States & ESN Forecasting</title>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Your styles -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="title">🔥 Wildfire States & ESN Forecasting</div>
+  </header>
+
+  <main class="app-main">
+    <!-- Map -->
+    <section id="map"></section>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="card">
+        <h2>Totals</h2>
+        <div class="metrics">
+          <div class="metric">
+            <div class="label">US total</div>
+            <div id="usTotal" class="value">—</div>
+          </div>
+          <div class="metric">
+            <div id="stateName" class="label">State</div>
+            <div id="stateTotal" class="value">—</div>
+          </div>
+          <div id="coverage" class="coverage"></div>
+        </div>
+
+        <!-- Back button (hidden by default) -->
+        <button id="backButton" style="display:none; margin:10px 0;">
+          ← Back to US
+        </button>
+
+        <div class="table-title" id="topTitle">Top 10 States (by total)</div>
+        <div class="table-wrap">
+          <table id="top10">
+            <thead>
+              <tr><th>Rank</th><th>State</th><th>Total</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Config -->
+  <script src="./assets/js/config.js"></script>
+
+  <!-- App logic -->
+  <script type="module" src="./assets/js/app.js"></script>
+</body>
+</html>

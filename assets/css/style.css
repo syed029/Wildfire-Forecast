@@ -1,0 +1,136 @@
+/* ===== App layout (header + main split) ===== */
+:root{
+  --bg:#0b1223;
+  --panel:#0f1a33;
+  --panel-2:#0f213a;
+  --border:#23324d;
+  --text:#e8eef7;
+  --muted:#9fb1cb;
+  --accent:#3b82f6;
+}
+
+*{ box-sizing:border-box; }
+
+html, body{
+  height:100%;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+.app-header{
+  height:56px;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  background:#0a1021;
+  border-bottom:1px solid var(--border);
+  font-weight:700;
+}
+
+.app-header .title{ font-size:20px; }
+
+/* Main split: map + sidebar */
+.app-main{
+  display:flex;
+  height:calc(100vh - 56px);
+  gap:12px;
+  padding:12px;
+}
+
+#map{
+  flex:1 1 auto;
+  min-width:0;
+  border-radius:12px;
+  overflow:hidden;
+  background:#000; /* helps while tiles load */
+}
+
+#sidebar{
+  width:360px;
+  flex:0 0 360px;
+  min-width:320px;
+  border-radius:12px;
+  background:var(--panel);
+  padding:12px;
+  overflow:auto;
+}
+
+.card{
+  background:var(--panel-2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+}
+
+/* Metrics (US + state) */
+.metrics{ display:grid; gap:12px; margin-bottom:12px; }
+.metric .label{ color:var(--muted); font-size:12px; }
+.metric .value{ font-size:28px; font-weight:800; line-height:1.1; }
+
+/* Tables */
+.table-title{ margin:6px 0 8px; color:var(--muted); font-weight:700; font-size:13px; }
+.table-wrap{ overflow:auto; border-radius:10px; border:1px solid var(--border); }
+
+#top10,
+#topTable{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+#top10 thead th,
+#topTable thead th{
+  text-align:left;
+  padding:10px 12px;
+  background:#0e2744;
+  border-bottom:1px solid var(--border);
+}
+#top10 tbody td,
+#topTable tbody td{
+  padding:10px 12px;
+  border-bottom:1px solid var(--border);
+}
+#top10 tbody tr:last-child td,
+#topTable tbody tr:last-child td{ border-bottom:none; }
+
+/* Back button (if present) */
+#backButton{
+  margin-top:10px;
+  padding:8px 12px;
+  background:#1f2e4a;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+#backButton:hover{ background:#284061; }
+
+/* ===== TLDR Tooltip content (structure) ===== */
+.tldr{ min-width:300px; }
+.tldr-title{
+  font-weight:800;              /* <- bold title */
+  font-size:16px;
+  margin:0 0 6px 0;
+}
+
+/* Table inside tooltip */
+.tldr-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+.tldr-table td{
+  padding:6px 8px;
+  border-bottom:1px solid #e5e7eb;
+  color:#111827;
+}
+.tldr-table td:nth-child(2){ color:#334155; }
+.tldr-table td:last-child{
+  text-align:right;
+  font-weight:600;
+  color:#111827;
+}
+
+/* Make links in tooltips readable on light panel */
+.leaflet-tooltip a{ color:#0b5ff0; }
