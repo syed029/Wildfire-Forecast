@@ -286,7 +286,7 @@ async function renderStates() {
 
   // Default national view
   // map.fitBounds(statesLayer.getBounds(), { padding: [10,10] });
-  map.setView([37.8, -96.9], 5);
+  map.setView([37.8, -96.9], 4);
   if ($backButton) $backButton.style.display = "none";
 
   // Sidebar defaults for US
