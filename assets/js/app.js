@@ -961,7 +961,63 @@ function renderTop10States() {
   ).join("");
 }
 
+<<<<<<< HEAD
 /* ---------------------- COUNTIES VIEW --------------------- */
+=======
+function renderTop10Counties(stateCode, countiesData) {
+  if (!$topTableTbody) return;
+  if ($topTitle) $topTitle.textContent = `Top 10 Counties in ${code2name(stateCode)} (by total)`;
+  const rows = Object.entries(countiesData)
+    .map(([fips, rec]) => ({
+      name: rec?.county_name || fips,
+      total: Number(rec?.total_till_date ?? 0)
+    }))
+    .sort((a,b) => b.total - a.total)
+    .slice(0, 10);
+  $topTableTbody.innerHTML = rows.map((r, i) =>
+    `<tr><td>${i+1}</td><td>${r.name}</td><td>${fmt(r.total)}</td></tr>`
+  ).join("");
+}
+
+// ---- MAP: states ----
+async function renderStates() {
+  if (!usGeoJSON) {
+    usGeoJSON = await loadJSON("https://cdn.jsdelivr.net/gh/python-visualization/folium/examples/data/us-states.json");
+  }
+  if (statesLayer) map.removeLayer(statesLayer);
+  if (countiesLayer) { map.removeLayer(countiesLayer); countiesLayer = null; }
+
+  statesLayer = L.geoJSON(usGeoJSON, {
+    style: (feature) => {
+      const code = (feature?.id || "").toUpperCase();
+      const rec  = statesData[code];
+      return { color:"#666", weight:1, fillColor: colorMap(rec?.color || "y"), fillOpacity:0.6 };
+    },
+    onEachFeature: (feature, layer) => {
+      const code = (feature?.id || "").toUpperCase();
+      const rec  = statesData[code];
+      layer.bindTooltip(tldrHTML(code, rec), { sticky:true, className:"tldr-tooltip" });
+      layer.on("click", () => showCounties(code));
+    }
+  }).addTo(map);
+
+  
+
+  // Default national view
+  // map.fitBounds(statesLayer.getBounds(), { padding: [10,10] });
+  map.setView([37.8, -96.9], 4);
+  if ($backButton) $backButton.style.display = "none";
+
+  // Sidebar defaults for US
+  if ($stateRow) $stateRow.style.display = "none";  // hide by default on national view
+  $stateName.textContent  = "United States";
+  $stateTotal.textContent = fmt(usTotal);
+  $coverage.textContent   = "";
+  renderTop10States();
+}
+
+// ---- MAP: counties ----
+>>>>>>> 5659e7aa272a32cf59c5b5ce04ff567d7efc36ed
 async function showCounties(code) {
   viewLevel = "county";
   lastStateCode = code;
