@@ -8,14 +8,120 @@
   <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+
 
   <!-- Your styles -->
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
+
+
 </head>
+
+
+<!-- Splash / Loader (drop-in) -->
+<div id="splash" aria-live="polite">
+  <div class="splash-card">
+    <div class="logos">
+      <img class="logo" src="./assets/logo/cdcl.png" alt="CDCL">
+      <img class="logo logo--right" src="./assets/logo/umd_big.png" alt="UMD">
+    </div>
+    <h1 class="title">🔥 Wildfire Forecasting</h1>
+    <p id="splash-msg" class="msg">Loading data...</p>
+    <div class="bar" id="splash-progress"></div>
+  </div>
+</div>
+
+<style>
+  /* Fullscreen overlay that ignores global styles */
+  #splash{
+    position:fixed; inset:0; z-index:999999;
+    background:#0c1421; display:flex; align-items:center; justify-content:center;
+  }
+  #splash .splash-card{ text-align:center; color:#fff; font-family:Inter, system-ui, Arial, sans-serif; 
+  transform: scale(2.0);
+  transform-origin: center center;
+  }
+  /* side-by-side logos, bulletproof against global img rules */
+  #splash .logos{ display:flex; align-items:center; gap:16px; justify-content:center; margin-bottom:18px; }
+  #splash .logo{
+    width:auto !important; height:64px !important; max-width:none !important; object-fit:contain; display:block !important;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+  }
+  #splash .title{ margin:0 0 6px; font-size:28px; font-weight:800; letter-spacing:.2px; }
+  #splash .msg{ margin:0; opacity:.85; font-size:14px; }
+  /* simple fade-out */
+  #splash.hide{ opacity:0; visibility:hidden; transition:opacity .32s ease, visibility 0s .32s; }
+  #splash .logo--right { height: 96px !important; }
+    /* progress bar container */
+  #splash .bar{
+    --w: 0%;
+    width: 340px;            /* adjust to taste */
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.12);
+    overflow: hidden;
+    margin-top: 10px;
+    position: relative;
+  }
+
+  /* the filling part uses the --w variable */
+  #splash .bar::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: var(--w);
+    background: #34d399;     /* teal/green; change if you want */
+    transition: width .25s ease;
+  }
+
+
+</style>
+
+<script>
+  window.Splash = (() => {
+    const el   = document.getElementById('splash');
+    const msg  = document.getElementById('splash-msg');
+    const bar  = document.getElementById('splash-progress');
+
+    return {
+      show(text){
+        if (text) msg.textContent = text;
+        el.hidden = false;
+        el.style.opacity = '1';
+        bar?.style.setProperty('--w', '0%');
+      },
+      setMessage(text){ if (text) msg.textContent = text; },
+      setProgress(pct){
+        const v = Math.max(0, Math.min(100, Number(pct)||0));
+        bar?.style.setProperty('--w', v + '%');
+      },
+      hide(){
+        el.style.opacity = '0';
+        el.style.visibility = 'hidden';
+        setTimeout(() => el.remove(), 300);
+      }
+    };
+  })();
+
+  // Auto-show on load
+  document.addEventListener('DOMContentLoaded', () => {
+    Splash.show('Loading data…');
+  });
+</script>
+
+
 <body>
+
   <header class="app-header">
-    <div class="title">🔥 Wildfire States & ESN Forecasting</div>
+    <div class="title">🔥 Wildfire Forecasting</div>
+
+      <!-- top-right logo -->
+  <a class="brand-link" href="./" aria-label="Home">
+    <img class="brand-logo"
+         src="./assets/logo/umd_small.png"
+         alt="University of Maryland logo">
+  </a>
   </header>
 
   <main class="app-main">
@@ -25,10 +131,10 @@
     <!-- Sidebar -->
     <aside id="sidebar">
       <div class="card">
-        <h2>Totals</h2>
+        <h2>Total Incidents</h2>
         <div class="metrics">
           <div class="metric">
-            <div class="label">US total</div>
+            <div class="label">US Total Incidents</div>
             <div id="usTotal" class="value">—</div>
           </div>
           <div class="metric">
@@ -55,6 +161,7 @@
       </div>
     </aside>
   </main>
+
 
   <!-- Config -->
   <script src="./assets/js/config.js"></script>

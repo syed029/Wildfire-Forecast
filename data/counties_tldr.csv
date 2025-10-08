@@ -1,2 +1,9 @@
-state,geoid,county_name,last_obs_week_start,last_obs_week_end,last_obs_week_count,last_obs_month_start,last_obs_month_end,last_obs_month_count,next_week_start,next_week_end,next_week_forecast,next_month_start,next_month_end,next_month_forecast,total_till_date,color,updated_at
-CA,06037,Los Angeles County,9/1/2025,9/7/2025,152,9/1/2025,9/30/2025,198,9/8/2025,9/14/2025,61,10/1/2025,10/31/2025,211,27455,y,9/22/2025
+state,geoid,county_name,color,total_till_date,last_obs_week_start,last_obs_week_end,last_obs_week_count,last_obs_month_start,last_obs_month_end,last_obs_month_count,next_week_start,next_week_end,next_week_forecast,next_month_start,next_month_end,next_month_forecast
+CA,06001,Alameda County,y,420,2025-10-06,2025-10-12,1,2025-09-15,2025-10-12,2,2025-10-13,2025-10-19,1,2025-11-01,2025-11-30,4
+CA,06005,Amador County,g,548,2025-09-22,2025-09-28,1,2025-09-01,2025-09-28,8,2025-09-29,2025-10-05,0,2025-10-01,2025-10-31,0
+CA,06019,Fresno County,g,3952,2025-10-06,2025-10-12,4,2025-09-15,2025-10-12,39,2025-10-13,2025-10-19,0,2025-11-01,2025-11-30,53
+CA,06037,Los Angeles County,r,28126,2025-10-06,2025-10-12,23,2025-09-15,2025-10-12,214,2025-10-13,2025-10-19,137,2025-11-01,2025-11-30,751
+CA,06065,Riverside County,g,14649,2025-10-06,2025-10-12,10,2025-09-15,2025-10-12,76,2025-10-13,2025-10-19,10,2025-11-01,2025-11-30,40
+CA,06071,San Bernardino County,y,3429,2025-10-06,2025-10-12,3,2025-09-15,2025-10-12,20,2025-10-13,2025-10-19,11,2025-11-01,2025-11-30,52
+CA,06073,San Diego County,g,2617,2025-10-06,2025-10-12,1,2025-09-15,2025-10-12,6,2025-10-13,2025-10-19,0,2025-11-01,2025-11-30,2
+CA,06093,Siskiyou County,g,2989,2025-10-06,2025-10-12,3,2025-09-15,2025-10-12,42,2025-10-13,2025-10-19,5,2025-11-01,2025-11-30,25
