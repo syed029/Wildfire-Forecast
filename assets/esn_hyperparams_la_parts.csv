@@ -1,0 +1,5 @@
+level,state,county,part,reservoir_size,spectral_radius,leak_rate,ridge,input_scale,bias,washout,horizon,lag,trim_threshold,sparsity,noise,scale,seed,deterministic
+la_part,CA,Los Angeles,Part1,400,0.95,1.0,0.01,0.5,0,50,4,0,0,0.1,0,log1p,42,True
+la_part,CA,Los Angeles,Part2,400,0.95,1.0,0.01,0.5,0,50,4,0,0,0.1,0,log1p,42,True
+la_part,CA,Los Angeles,Part3,400,0.95,1.0,0.01,0.5,0,50,4,0,0,0.1,0,log1p,42,True
+la_part,CA,Los Angeles,Part4,400,0.95,1.0,0.01,0.5,0,50,4,0,0,0.1,0,log1p,42,True

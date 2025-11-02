@@ -1,0 +1,292 @@
+/* Leaflet container sizing / reset */
+.leaflet-container {
+  font: 12px/1.4 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+/* Layer control button placement (optional) */
+.leaflet-control-layers {
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, .15);
+  overflow: hidden;
+}
+
+/* ===== Tooltip skin (applies when you bind with className: "tldr-tooltip") ===== */
+.leaflet-tooltip.tldr-tooltip {
+  background: #fffbea;
+  /* soft warm panel */
+  border: 1px solid #e5d8a8;
+  color: #1f2937;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .15);
+
+  /* padding: top | right | bottom | left   */
+  padding: 10px 12px 16px 16px;
+  /* <- extra left + bottom padding */
+}
+
+/* Optional: pointer arrow look a bit subtler */
+.leaflet-tooltip-left.tldr-tooltip:before,
+.leaflet-tooltip-right.tldr-tooltip:before {
+  border-left-color: #e5d8a8;
+  border-right-color: #e5d8a8;
+}
+
+/* If you ever kept the old class "tldr" on tooltip, keep it in sync: */
+.leaflet-tooltip.tldr {
+  background: #fffbea;
+  border: 1px solid #e5d8a8;
+  color: #1f2937;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .15);
+  padding: 10px 12px 16px 16px;
+}
+
+/* (Optional) make tooltip table header if you add one */
+.tldr-table thead th {
+  font-weight: 700;
+  color: #64748b;
+  text-align: left;
+  border-bottom: 2px solid #e5e7eb;
+  padding: 6px 0;
+}
+
+
+/* Keep map tiles from wrapping (avoids “multiple worlds”) if you enabled `noWrap:true` */
+.leaflet-tile-container img {
+  image-rendering: auto;
+}
+
+/* ===== Wildfire map overlays (exact old-UI positions) ===== */
+
+/* Map is the positioning context for legend & mini-chart */
+#map {
+  position: relative;
+}
+
+/* Legend pinned to map’s top-right */
+#mapLegend {
+  position: absolute;
+  top: 78px;
+  right: 12px;
+  z-index: 1000;
+  background: rgba(17, 24, 39, .92);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+}
+
+#mapLegend .legend-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+#mapLegend .legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+#mapLegend .swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+#mapLegend .swatch-red {
+  background: #f87171;
+}
+
+#mapLegend .swatch-yellow {
+  background: #fbbf24;
+}
+
+#mapLegend .swatch-green {
+  background: #34d399;
+}
+
+#mapLegend .swatch-gray {
+  background: #4b5563;
+}
+
+/* replace your hover-chart display lines with this */
+.leaflet-container .hover-chart-fixed {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  height: clamp(180px, 28vh, 280px);
+  background: rgba(17, 24, 39, .92);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .35);
+  padding: 10px 12px;
+  z-index: 5000;
+
+  /* keep it hidden by default */
+  display: none;
+
+  /* layout when shown */
+  flex-direction: column;
+}
+
+/* add this state class so JS can show it as a flex container */
+.leaflet-container .hover-chart-fixed.show {
+  display: flex;
+}
+
+.hover-chart-fixed .bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 28px;
+  margin-bottom: 6px;
+}
+
+.hover-chart-fixed #stateSpark {
+  display: block;
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+
+
+
+
+/* Optional: tiny buttons style for "Color: Rank/YoY" */
+.mini-btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  background: #1f2e4a;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.mini-btn:focus,
+.mini-btn:hover {
+  background: #284061;
+}
+
+.mini-btn.is-active {
+  background: #0ea5e9;
+  border-color: #38bdf8;
+  color: #0b1220;
+}
+
+/* Fullscreen overlay that ignores global styles */
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #0c1421;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#splash .splash-card {
+  text-align: center;
+  color: #fff;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  transform: scale(2.0);
+  transform-origin: center center;
+}
+
+/* side-by-side logos, bulletproof against global img rules */
+#splash .logos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+#splash .logo {
+  width: auto !important;
+  height: 64px !important;
+  max-width: none !important;
+  object-fit: contain;
+  display: block !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .35));
+}
+
+#splash .title {
+  margin: 0 0 6px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+#splash .msg {
+  margin: 0;
+  opacity: .85;
+  font-size: 14px;
+}
+
+/* simple fade-out */
+#splash.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .32s ease, visibility 0s .32s;
+}
+
+#splash .logo--right {
+  height: 96px !important;
+}
+
+/* progress bar container */
+#splash .bar {
+  --w: 0%;
+  width: 340px;
+  /* adjust to taste */
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  overflow: hidden;
+  margin-top: 10px;
+  position: relative;
+}
+
+/* the filling part uses the --w variable */
+#splash .bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: var(--w);
+  background: #34d399;
+  /* teal/green; change if you want */
+  transition: width .25s ease;
+}
+#modeCaption{
+  font-size:12px;
+  color:#9ca3af;
+  padding:8px 12px 0;
+}
+#modeCaption b{ color:#e5e7eb; }
+#dataSourceLink{
+  position:absolute;
+  top: 12px;
+  right: 140px;                 /* adjust if it clashes with logo */
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  background:#0b1220;
+  border:1px solid #38bdf8;
+  border-radius:999px;
+  color:#38bdf8;
+  text-decoration:none;
+  font-size:12px;
+  line-height:1;
+  box-shadow:0 2px 10px rgba(0,0,0,.25);
+}
+#dataSourceLink:hover{ background:#0f172a; color:#7dd3fc; border-color:#7dd3fc; }
+
+/* if no header container existed and it fell back to <body>, pin it */
+body > #dataSourceLink{ position:fixed; z-index:9999; }
