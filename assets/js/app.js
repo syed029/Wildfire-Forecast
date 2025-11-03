@@ -1412,7 +1412,26 @@ function compassNamesForLaParts(geojson) {
   }
   return nameByPartId; // { "1":"Northwest", ... }
 }
-
+// Extra metric row: California Total Incidents (shown only in LA-parts view)
+function ensureCalMetricRow() {
+  let calRow = document.getElementById("calMetricRow");
+  if (!calRow) {
+    const usRow = document.querySelector("#usTotal")?.closest(".metric"); // existing US metric row
+    calRow = document.createElement("div");
+    calRow.className = "metric";
+    calRow.id = "calMetricRow";
+    calRow.innerHTML = `
+      <div class="label" id="calLabel">California Total Incidents</div>
+      <div class="value" id="calTotal">0</div>
+    `;
+    // insert just after US and before the existing state/county row
+    usRow?.parentNode?.insertBefore(calRow, (document.querySelector("#stateName")?.closest(".metric")) || usRow.nextSibling);
+  }
+  const $calRow   = calRow;
+  const $calTotal = document.getElementById("calTotal");
+  const $calLabel = document.getElementById("calLabel");
+  return { $calRow, $calTotal, $calLabel };
+}
 
 function drawSeries(title, labels, datasets) {
   ensureHoverChartControl();
@@ -2210,6 +2229,8 @@ async function renderStates() {
   ensureLegend();
   renderTop10States();
   recolorStatesLayerAndTable();
+  ensureCalMetricRow().$calRow.style.display = "none";
+
 }
 function renderTop10States() {
   if (!$topTableTbody) return;
@@ -2362,6 +2383,8 @@ async function showCounties(code) {
   recolorCountiesLayerAndTable();
   ensureLegend(); ensureModeCaption();
   removeLaBattalionOutline();
+  ensureCalMetricRow().$calRow.style.display = "none";
+
 }
 
 /* === State dimming when entering county view === */
@@ -2386,6 +2409,7 @@ function panZoomToLayer(layer, { padPct = 0.08, maxZoom = 10 } = {}) {
     });
   } catch {}
 }
+
 
 /* ===== LA PARTS view (separate weekly CSV) ===== */
 async function showLaParts(stateCode) {
@@ -2470,6 +2494,32 @@ async function showLaParts(stateCode) {
   // side panel (names instead of PartN)
   $stateName.textContent = "Los Angeles County";
   $topTitle.textContent = "LA Parts by Total Incidents";
+// show a separate California line between US and Los Angeles County
+const { $calRow, $calTotal } = ensureCalMetricRow();
+$calRow.style.display = "";
+
+// compute California total from state series (preferred)
+const caRec = statesData["CA"] || buildCountsTLDR("S:CA", stateSeries["CA"], "CA", { stateCode: "CA" });
+$calTotal.textContent = fmt(Number(caRec?.total_till_date || 0));
+
+  // --- header number: Los Angeles County total ---
+const laCountySeries =
+  getCountySeries("CA", "Los Angeles County") ||
+  getCountySeries("CA", "Los Angeles"); // fallback if header lacks "County"
+
+const laTotalFromCounty = laCountySeries
+  ? laCountySeries.values.reduce((s, v) => s + (Number(v) || 0), 0)
+  : 0;
+
+// As a safety fallback, sum parts (should match county series)
+const laTotalFromParts = Object.values(partRecs)
+  .reduce((s, r) => s + (Number(r?.total_till_date) || 0), 0);
+
+const laTotal = laTotalFromCounty || laTotalFromParts;
+
+if ($stateRow) $stateRow.style.display = "";           // ensure header row is visible
+$stateTotal.textContent = fmt(laTotal);                // <-- sets the correct number
+
   const rows = partKeys
     .filter(k => hasModelForLaPart(k))
     .map(k => {
@@ -2513,6 +2563,8 @@ async function backToUSFast() {
   $coverage.textContent = "";
   map.setView([37.8, -96.9], 4);
   ensureLegend(); renderTop10States(); recolorStatesLayerAndTable();
+  ensureCalMetricRow().$calRow.style.display = "none";
+
 }
 
 /* ===== init ===== */
